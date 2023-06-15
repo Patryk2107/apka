@@ -1,0 +1,26 @@
+﻿@model FileSearchModel
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="LoginStyle">
+                <div class="panel-body">
+                    <form asp-action="UploadedFile">
+                        <fieldset>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="yourmail@example.com" asp-for="Email" name="email" type="text">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="search file name" asp-for="FileName" name="search" type="text">
+                            </div>
+                            <input class="btn btn-lg btn-success btn-block" type="submit" value="search">
+                        </fieldset>
+                        <br/>
+                        <a asp-action="UploadFile" class="btn btn-lg btn-success btn-block" >Uplode file</a>
+                    </form>
+                    <hr />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

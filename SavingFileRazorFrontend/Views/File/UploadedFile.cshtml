@@ -1,0 +1,80 @@
+﻿
+@model SavingFileRazorFrontend.Models.FileModel
+
+@{ ViewData["FileModel"] = "FileModel"; }
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+@if (Model.Title != "NoAuth")
+{
+    <div class="container">
+        <div class="row">
+            <div class="table-responsive">
+                <table id="main-table" class="table exotic-table">
+                    <thead>
+                    <tr class="text-center">
+                        <th> @Html.DisplayNameFor(model => model.Id)</th>
+                        <th>@Html.DisplayNameFor(model => model.StatusFile)</th>
+                        <th>@Html.DisplayNameFor(model => model.FileType)</th>
+                        <th>@Html.DisplayNameFor(model => model.AddedDate)</th>
+                        <th>@Html.DisplayNameFor(model => model.Description)</th>
+                        <th>@Html.DisplayNameFor(model => model.Title)</th>
+                        <th>@Html.DisplayNameFor(model => model.UserEmail)</th>
+                        <th>@Html.DisplayNameFor(model => model.UserSurname)</th>
+                        <th>@Html.DisplayNameFor(model => model.UserName)</th>
+                    </tr>
+                    </thead>
+                    <tbody class="text-center">
+
+                    <tr>
+                        <td> @Html.DisplayFor(modelItem => Model.Id)</td>
+                        <td> @Html.DisplayFor(modelItem => Model.StatusFile)</td>
+                        <td> @Html.DisplayFor(modelItem => Model.FileType)</td>
+                        <td> @Html.DisplayFor(modelItem => Model.AddedDate)</td>
+                        <td> @Html.DisplayFor(modelItem => Model.Description)</td>
+                        <td> @Html.DisplayFor(modelItem => Model.Title)</td>
+                        <td> @Html.DisplayFor(modelItem => Model.UserEmail)</td>
+                        <td> @Html.DisplayFor(modelItem => Model.UserSurname)</td>
+                        <td> @Html.DisplayFor(modelItem => Model.UserName)</td>
+     @if (ViewData["Message"] == "Auth")
+     {
+
+
+         <td style="text-align: right">
+             <form asp-action="Delete" asp-route-id="@Model.Id">
+                 <input type="hidden" asp-for="@Model.Id"/>
+                 <input type="submit" value="Usuń" class="btn btn-danger"/>
+             </form>
+             <form asp-action="Edit" asp-route-id="@Model.Id">
+                                    <input type="hidden" asp-for="@Model.Id" />
+                                    <input type="submit" value="Edytuj" class="btn btn-success" />
+                                </form>
+         </td>
+     }                   
+                    </tr>
+
+                    </tbody>
+                    @*<p>
+                    <a asp-action="Create" class="btn btn-success">Dodaj doktora</a>
+                </p>*@
+                </table>
+            </div>
+        </div>
+        <div>
+            <img src="data:image;base64,@System.Convert.ToBase64String(Model.Photo)" style="max-height: 600px; max-width: 400px;"/>
+        </div>
+        <script>
+        $(document).ready(function () {
+            $('[data-toggle="popover"]').popover({ title: "Payment Modes", html: true, placement: "left" });
+        });</script>
+    </div>
+}
+@if (Model.Title == "NoAuth")
+{
+    <h1>Picture not found</h1>
+    <a class="button button-dark-blue iq-mt-15 text-center" asp-area="" asp-controller="File" asp-action="Index" style="color: red">Back to search</a>
+}

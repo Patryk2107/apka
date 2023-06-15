@@ -1,0 +1,112 @@
+﻿
+@model FileModel
+
+@{ ViewData["Title"] = "CarModel"; }
+
+
+<head>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <link href="https://fonts.googleapis.com/css?family=Oswald:700|Patua+One|Roboto+Condensed:700" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<style>
+    body {
+        width: 100%;
+        height: 100%;
+        font-family: 'Roboto Condensed', sans-serif;
+    }
+
+
+    h1, h2, h3 {
+        margin: 0 0 35px 0;
+        font-family: 'Patua One', cursive;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    p {
+        margin: 0 0 25px;
+        font-size: 18px;
+        line-height: 1.6em;
+    }
+
+    a {
+        color: #26a5d3;
+    }
+
+        a:hover, a:focus {
+            text-decoration: none;
+            color: #26a5d3;
+        }
+
+    #contact {
+        background: #333333;
+        color: #f4f4f4;
+        padding-bottom: 80px;
+    }
+
+    textarea.form-control {
+        height: 100px;
+    }
+</style>
+<section id="contact" class="content-section text-center">
+    <div class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <form class="form-horizontal" asp-action="UploadFile" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" class="form-control" id="title" asp-for="Title" placeholder="Title" name="Title">
+                        </div>
+                        <div class="form-group">
+                            <label for="desc">Description</label>
+                            <input type="text" class="form-control" id="desc" asp-for="Description" placeholder="Description" name="Description">
+                        </div>
+                        <div class="form-group">
+                            <label for="fileType">FileType</label>
+                            <input type="text" class="form-control" id="fileType" asp-for="FileType" placeholder="File type" name="FileType">
+                        </div>
+                        <div class="form-group">
+                            <label for="addedDate">Added date</label>
+                            <input type="date" class="form-control" id="addedDate" asp-for="AddedDate" placeholder="Added date" name="AddedDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="userName">User Name</label>
+                            <input type="text" class="form-control" id="userName" asp-for="UserName" placeholder="User name" name="UserName">
+                        </div>
+                        <div class="form-group">
+                            <label for="userSurname">User surname</label>
+                            <input type="text" class="form-control" id="userSurname" asp-for="UserSurname" placeholder="User surname" name="UserSurname">
+                        </div>
+                        <div class="form-group">
+                            <label for="userEmal">User email</label>
+                            <input type="text" class="form-control" id="userEmal" asp-for="UserEmail" placeholder="User email" name="UserEmail">
+                        </div>
+                        @if (ViewData["Message"] != "NoAuth")
+                        {
+                            <div class="form-group">
+                                <label for="statusFile">Status file (Private, Public, Secret)</label>
+                                <input type="text" class="form-control" id="statusFile" asp-for="StatusFile" placeholder="Status file" name="StatusFile">
+                            </div>
+                        }
+
+                        <div class="form-group">
+                            <label for="file">File</label>
+                            <input type="file" class="form-control" id="file" asp-for="File" placeholder="File" name="File">
+                        </div>
+>
+
+                        <button type="submit" class="btn btn-default">Zatwierdź</button>
+                    </form>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
